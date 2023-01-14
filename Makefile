@@ -1,6 +1,6 @@
 prefix ?= /usr/local
 exec_prefix ?= $(prefix)
-bindir ?= $(exec_prefix)/bin
+libexecdir ?= $(exec_prefix)/libexec
 
 INSTALL ?= install
 
@@ -8,5 +8,5 @@ chrome-sandbox: sandbox/linux/suid/sandbox.c sandbox/linux/suid/process_util_lin
 	$(CC) $(CPPFLAGS) -I. $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 install: chrome-sandbox
-	$(INSTALL) -d "$(DESTDIR)$(bindir)"
-	$(INSTALL) -m4711 chrome-sandbox "$(DESTDIR)$(bindir)"/chrome-sandbox
+	$(INSTALL) -d "$(DESTDIR)$(libexecdir)"
+	$(INSTALL) -m4711 chrome-sandbox "$(DESTDIR)$(libexecdir)"/chrome-sandbox
